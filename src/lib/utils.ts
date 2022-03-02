@@ -21,3 +21,10 @@ export const formatDate = (date: string): string => {
   }
   return format(d, 'yyyy년 M월 d일');
 };
+
+export function detectJSDOM() {
+  if (typeof navigator === 'undefined') return false;
+  return navigator.userAgent.includes('jsdom');
+}
+
+export const ssrEnabled = process.env.REACT_APP_SSR === 'enabled';

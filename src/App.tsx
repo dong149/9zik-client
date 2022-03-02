@@ -1,12 +1,14 @@
+import WritePage from 'pages/WritePage';
 import React from 'react';
 import { Route, Routes } from 'react-router';
 import './App.css';
-import Home from './pages/Home';
+import HomePage from './pages/HomePage';
 
 function App() {
   return (
     <Routes>
-      <Route path="/" element={<Home />} />
+      <Route path="/" element={<HomePage />} />
+      <Route path="/write" element={<WritePage />} />
     </Routes>
   );
 }
