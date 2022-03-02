@@ -9,7 +9,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: ${themedPalette.text1};
-  background-color: ${themedPalette.bg_element1};
+  background-color: ${themedPalette.bg_page1};
   box-sizing: border-box;
 }
 * {
