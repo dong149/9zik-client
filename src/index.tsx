@@ -1,14 +1,23 @@
+import GlobalStyles from 'GlobalStyles';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import { BrowserRouter } from 'react-router-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+const loadTheme = () => {
+  const theme = 'light';
+  document.body.dataset.theme = theme;
+};
+
+loadTheme();
+
 ReactDOM.render(
-  <React.StrictMode>
+  <BrowserRouter>
+    <GlobalStyles />
     <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+  </BrowserRouter>,
+  document.getElementById('root'),
 );
 
 // If you want to start measuring performance in your app, pass a function
