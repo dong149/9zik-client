@@ -2,29 +2,27 @@ const mockPostData = {
   data: {
     trendingPosts: [
       {
-        id: 'b29fa04e-b1e8-4845-9646-42df97d36b5e',
-        title: '누구나 사용하기 쉽게 WAI-ARIA role ',
-        short_description:
-          '이번 코드 리뷰에서 h2에 aria-labeldby를 사용 해보라는 코멘트를 받게 되었다 이걸 왜 써야 하는 걸까? 우리가 제작하는 웹페이지는 눈이 잘 보이거나 소리를 잘 듣는다거나 웹페이지를 다루는데 능숙한 사람들만이 사용하는 것이 아니다 당연하게 개발자가 제작하는 ',
+        id: '939c0742-cb9c-4daa-8b9f-b2fbcd35c9bda',
+        title: 'Wechunk 프로젝트',
+        short_description: '토이 프로젝트를 소개하는 서비스를 개발합니다',
         thumbnail:
-          'https://images.velog.io/images/liswktjs/post/f6aff33c-67ae-4e65-bf2e-56dbcad3d10d/READERS CAPTIONING.jpg',
-        likes: 1,
+          'https://images.velog.io/images/pingu944/post/53a978fb-9a0c-4df6-ad0c-b7c8a78b0787/위벅스 로그인-1.png',
+        likes: 1423,
         user: {
-          id: '254504a5-d229-4412-a8fd-fe1b3ebfb8fc',
-          username: 'liswktjs',
+          id: '3fd14aa8-0eaf-48fd-bf17-a0aa46d82e29',
+          username: '류동훈',
           profile: {
-            id: 'a5b6455a-f84f-41db-b4a7-5dd49f35fe47',
-            thumbnail:
-              'https://images.velog.io/images/liswktjs/profile/5cec8e4b-7a47-4a0f-ad00-67eb6f01426a/social.jpeg',
+            id: 'cdc9e58f-14d2-452c-a982-cd05f63919d9',
+            thumbnail: 'https://images.velog.io/images/pingu944/profile/affb055f-66e0-400d-97d2-fad9e07beb91/img.jpg',
             __typename: 'UserProfile',
           },
           __typename: 'User',
         },
-        url_slug: '누구나-사용하기-쉽게-WAI-ARIA-role',
-        released_at: '2022-02-21T07:01:12.451Z',
-        updated_at: '2022-02-27T14:28:25.537Z',
-        comments_count: 1,
-        tags: ['WAI-ARIA'],
+        url_slug: '로그인-페이지를-만들어버렸다',
+        released_at: '2022-02-23T11:17:59.640Z',
+        updated_at: '2022-03-02T08:47:05.058Z',
+        comments_count: 0,
+        tags: ['JavaScript', 'wecodefullstack', '위코드풀스택', '이걸해냄'],
         is_private: false,
         __typename: 'Post',
       },

@@ -2,7 +2,7 @@ import RoundButton from 'components/common/RoundButton';
 import MainResponsive from 'components/main/MainResponsive';
 import media from 'lib/styles/media';
 import { themedPalette } from 'lib/styles/themes';
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import ThemeToggleButton from './ThemeToggleButton';
 

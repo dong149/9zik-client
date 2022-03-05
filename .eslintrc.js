@@ -40,5 +40,7 @@ module.exports = {
     'prefer-destructuring': 'off',
     'consistent-return': 'off',
     'no-unused-vars': 'off',
+    'class-methods-use-this': 'off',
+    'object-shorthand': 'off',
   },
 };

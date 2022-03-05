@@ -9,6 +9,7 @@ function App() {
     <Routes>
       <Route path="/" element={<HomePage />} />
       <Route path="/write" element={<WritePage />} />
+      <Route path="/login/oauth2/code/github" element={<HomePage />} />
     </Routes>
   );
 }
