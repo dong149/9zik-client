@@ -42,5 +42,6 @@ module.exports = {
     'no-unused-vars': 'off',
     'class-methods-use-this': 'off',
     'object-shorthand': 'off',
+    'jsx-a11y/tabindex-no-positive': 'off',
   },
 };

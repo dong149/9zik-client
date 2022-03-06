@@ -5,9 +5,10 @@ import { mediaQuery } from 'lib/styles/media';
 import { themedPalette } from 'lib/styles/themes';
 import { ellipsis } from 'lib/styles/utils';
 import { formatDate } from 'lib/utils';
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled, { css } from 'styled-components';
+import ProjectModal from './ProjectModal';
 import RatioImage from './RatioImage';
 
 export type ProjectCardProps = {
@@ -15,6 +16,8 @@ export type ProjectCardProps = {
 };
 
 function ProjectCard({ project }: ProjectCardProps) {
+  const [modalVisible, setModalVisible] = useState(false);
+
   const url = `http://localhost:3000/`;
   const user = {
     id: '3fd14aa8-0eaf-48fd-bf17-a0aa46d82e29',
@@ -45,41 +48,40 @@ function ProjectCard({ project }: ProjectCardProps) {
   //   };
 
   return (
-    <Block>
-      {thumbnail && (
-        <StyledLink to={url}>
-          <RatioImage widthRatio={1.916} heightRatio={1} src={optimizeImage(thumbnail, 640)} />
-        </StyledLink>
-      )}
-      <Content clamp={!!thumbnail}>
-        <StyledLink to={url}>
-          <h4>{project.title}</h4>
-          <div className="description-wrapper">
-            <p>
-              {project.description.replace(/&#x3A;/g, ':')}
-              {project.description.length === 150 && '...'}
-            </p>
+    <>
+      <ProjectModal visible={modalVisible} onClose={() => setModalVisible(false)} />
+      <Block onClick={() => setModalVisible(true)}>
+        {thumbnail && <RatioImage widthRatio={1.916} heightRatio={1} src={optimizeImage(thumbnail, 640)} />}
+        <Content clamp={!!thumbnail}>
+          <StyledLink to={url}>
+            <h4>{project.title}</h4>
+            <div className="description-wrapper">
+              <p>
+                {project.description.replace(/&#x3A;/g, ':')}
+                {project.description.length === 150 && '...'}
+              </p>
+            </div>
+          </StyledLink>
+          <div className="sub-info">
+            <span>{formatDate(project.created_at)}</span>
+            <span className="separator">·</span>
+            <span>{project.like_count}개의 댓글</span>
           </div>
-        </StyledLink>
-        <div className="sub-info">
-          <span>{formatDate(project.created_at)}</span>
-          <span className="separator">·</span>
-          <span>{project.like_count}개의 댓글</span>
-        </div>
-      </Content>
-      <Footer>
-        <Link className="userinfo" to={`/@${user.username}`}>
-          <img src={optimizeImage(userThumbnail, 120)} alt={`user thumbnail of ${user.username}`} />
-          <span>
-            by <b>{user.username}</b>
-          </span>
-        </Link>
-        <div className="likes">
-          <LikeIcon />
-          {project.like_count}
-        </div>
-      </Footer>
-    </Block>
+        </Content>
+        <Footer>
+          <div className="userinfo">
+            <img src={optimizeImage(userThumbnail, 120)} alt={`user thumbnail of ${user.username}`} />
+            <span>
+              by <b>{user.username}</b>
+            </span>
+          </div>
+          <div className="likes">
+            <LikeIcon />
+            {project.like_count}
+          </div>
+        </Footer>
+      </Block>
+    </>
   );
 }
 
