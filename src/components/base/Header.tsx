@@ -1,3 +1,4 @@
+import AuthModal from 'components/auth/AuthModal';
 import RoundButton from 'components/common/RoundButton';
 import MainResponsive from 'components/main/MainResponsive';
 import media from 'lib/styles/media';
@@ -7,18 +8,25 @@ import styled from 'styled-components';
 import ThemeToggleButton from './ThemeToggleButton';
 
 function Header() {
+  const [modalVisible, setModalVisible] = useState(false);
+
   return (
-    <Block>
-      <Inner>
-        <HeaderLogoBlock>
-          <HeaderLogo>9zik</HeaderLogo>
-        </HeaderLogoBlock>
-        <Right>
-          <ThemeToggleButton />
-          <RoundButton color="darkGray">로그인</RoundButton>
-        </Right>
-      </Inner>
-    </Block>
+    <>
+      <AuthModal visible={modalVisible} onClose={() => setModalVisible(false)} />
+      <Block>
+        <Inner>
+          <HeaderLogoBlock>
+            <HeaderLogo>9zik</HeaderLogo>
+          </HeaderLogoBlock>
+          <Right>
+            <ThemeToggleButton />
+            <RoundButton onClick={() => setModalVisible(true)} color="darkGray">
+              로그인
+            </RoundButton>
+          </Right>
+        </Inner>
+      </Block>
+    </>
   );
 }
 

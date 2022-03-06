@@ -43,5 +43,6 @@ module.exports = {
     'class-methods-use-this': 'off',
     'object-shorthand': 'off',
     'jsx-a11y/tabindex-no-positive': 'off',
+    'jsx-a11y/no-noninteractive-tabindex': 'off',
   },
 };

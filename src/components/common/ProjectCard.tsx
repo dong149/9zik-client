@@ -49,19 +49,17 @@ function ProjectCard({ project }: ProjectCardProps) {
 
   return (
     <>
-      <ProjectModal visible={modalVisible} onClose={() => setModalVisible(false)} />
+      <ProjectModal project={project} visible={modalVisible} onClose={() => setModalVisible(false)} />
       <Block onClick={() => setModalVisible(true)}>
         {thumbnail && <RatioImage widthRatio={1.916} heightRatio={1} src={optimizeImage(thumbnail, 640)} />}
         <Content clamp={!!thumbnail}>
-          <StyledLink to={url}>
-            <h4>{project.title}</h4>
-            <div className="description-wrapper">
-              <p>
-                {project.description.replace(/&#x3A;/g, ':')}
-                {project.description.length === 150 && '...'}
-              </p>
-            </div>
-          </StyledLink>
+          <h4>{project.title}</h4>
+          <div className="description-wrapper">
+            <p>
+              {project.description.replace(/&#x3A;/g, ':')}
+              {project.description.length === 150 && '...'}
+            </p>
+          </div>
           <div className="sub-info">
             <span>{formatDate(project.created_at)}</span>
             <span className="separator">·</span>

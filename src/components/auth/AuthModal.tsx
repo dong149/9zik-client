@@ -5,11 +5,12 @@ import { themedPalette } from '../../lib/styles/themes';
 import media from '../../lib/styles/media';
 import zIndexes from 'lib/styles/zindexes';
 import transitions from 'lib/styles/transitions';
-import ProjectDetail from './ProjectDetail';
+import { undrawJoyride } from 'lib/static/svg';
+import AuthForm from './AuthForm';
 
 const { useState, useEffect } = React;
 
-const ProjectModalBlock = styled.div<{ visible: boolean }>`
+const AuthModalBlock = styled.div<{ visible: boolean }>`
   position: fixed;
   top: 0;
   left: 0;
@@ -21,8 +22,8 @@ const ProjectModalBlock = styled.div<{ visible: boolean }>`
   z-index: ${zIndexes.AuthModal};
   background-color: rgba(249, 249, 249, 0.85);
   .wrapper {
-    width: 900px;
-    min-height: 480px;
+    width: 606px;
+    height: 480px;
     ${media.small} {
       flex: 1;
       width: auto;
@@ -95,13 +96,12 @@ const ProjectModalBlock = styled.div<{ visible: boolean }>`
   }
 `;
 
-interface ProjectModalProps {
-  project: any;
+interface AuthModalProps {
   visible: boolean;
   onClose: () => void;
 }
 
-const ProjectModal: React.FC<ProjectModalProps> = ({ project, visible, onClose }) => {
+const AuthModal: React.FC<AuthModalProps> = ({ visible, onClose }) => {
   const [closed, setClosed] = useState(true);
   useEffect(() => {
     let timeoutId: ReturnType<typeof setTimeout> | null = null;
@@ -122,22 +122,25 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, visible, onClose }
   if (!visible && closed) return null;
 
   return (
-    <ProjectModalBlock visible={visible}>
+    <AuthModalBlock visible={visible}>
       <div className="wrapper">
         <div className="gray-block">
-          <div>check</div>
+          <div>
+            <img src={undrawJoyride} alt="welcome" />
+            <div className="welcome">환영합니다!</div>
+          </div>
         </div>
         <div className="white-block">
           <div className="exit-wrapper">
             <MdClose onClick={onClose} tabIndex={1} />
           </div>
           <div className="block-content">
-            <ProjectDetail project={project} />
+            <AuthForm />
           </div>
         </div>
       </div>
-    </ProjectModalBlock>
+    </AuthModalBlock>
   );
 };
 
-export default ProjectModal;
+export default AuthModal;
