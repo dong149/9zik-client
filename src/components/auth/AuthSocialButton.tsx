@@ -1,7 +1,14 @@
 import { GithubIcon, GoogleIcon } from 'lib/static/svg';
 import * as React from 'react';
+import userService from 'services/user.service';
 import styled, { css } from 'styled-components';
 import { themedPalette } from '../../lib/styles/themes';
+
+const API_BASE_URL = process.env.NODE_ENV === 'production' ? process.env.REACT_APP_API_HOST : 'http://localhost:8080';
+
+const OAUTH2_REDIRECT_URI = 'http://localhost:3000/oauth2/redirect';
+
+const GITHUB_AUTH_URL = `${API_BASE_URL}/oauth2/authorization/github?redirect_uri=${OAUTH2_REDIRECT_URI}`;
 
 const AuthSocialButtonBlock = styled.a<{ border: boolean }>`
   margin-right: 1rem;
@@ -47,9 +54,19 @@ const AuthSocialButton: React.FC<AuthSocialButtonProps> = ({ provider, tabIndex,
   const info = providerMap[provider];
   const { icon: Icon, color, border } = info;
 
-  const host = process.env.NODE_ENV === 'production' ? process.env.REACT_APP_API_HOST : 'http://localhost:5000/';
+  console.log(currentPath);
 
-  const redirectTo = `${host}api/v2/auth/social/redirect/${provider}?next=${currentPath}`;
+  const onLogin = () => {
+    console.log('onLogin');
+    userService
+      .login()
+      .then((response: any) => {
+        console.log(response);
+      })
+      .catch((e: React.ErrorInfo) => {
+        console.log(e);
+      });
+  };
 
   return (
     <AuthSocialButtonBlock
@@ -58,7 +75,9 @@ const AuthSocialButton: React.FC<AuthSocialButtonProps> = ({ provider, tabIndex,
       }}
       border={border}
       tabIndex={tabIndex}
-      href={redirectTo}
+      onClick={onLogin}
+      href={GITHUB_AUTH_URL}
+      //   href={redirectTo}
     >
       <Icon />
     </AuthSocialButtonBlock>

@@ -44,5 +44,6 @@ module.exports = {
     'object-shorthand': 'off',
     'jsx-a11y/tabindex-no-positive': 'off',
     'jsx-a11y/no-noninteractive-tabindex': 'off',
+    'no-param-reassign': 'off',
   },
 };

@@ -5,10 +5,16 @@ import HomeLayout from 'components/home/HomeLayout';
 import MainResponsive from 'components/main/MainResponsive';
 import React, { ErrorInfo, useEffect, useState } from 'react';
 import projectService from 'services/project.service';
+import tokenService from 'services/token.service';
+import userService from 'services/user.service';
 import styled from 'styled-components';
 
-function HomePage() {
+function HomePage({ token }: any) {
   const [projects, setProjects] = useState([]);
+
+  if (token !== '') {
+    tokenService.updateLocalAccessToken(token);
+  }
 
   useEffect(() => {
     let completed = false;
